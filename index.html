@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pick What You Feel ❤️</title>
-
+  <title>For You ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #f7f7f7;
+      background: url('chits/z.jpeg') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,39 +20,91 @@
 
     .container {
       width: 90%;
-      max-width: 400px;
+      max-width: 380px;
+    }
+
+    .overlay {
+      background: rgba(255, 255, 255, 0.75);
+      padding: 18px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      backdrop-filter: blur(5px);
     }
 
     img {
       width: 100%;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-top: 10px;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+
+    img.fade-out {
+      opacity: 0;
     }
 
     button {
       margin-top: 15px;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border: none;
       background: #ff6b81;
       color: white;
-      border-radius: 6px;
-      font-size: 16px;
+      border-radius: 8px;
+      font-size: 15px;
       cursor: pointer;
     }
 
+    input {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 220px;
+      text-align: center;
+      font-size: 15px;
+    }
+
     h2 {
-      color: #444;
+      font-size: 18px;
+      color: #333;
+      margin: 0;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      input {
+        width: 90%;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Pick what you feel ❤️</h2>
-  <img id="chitImage" src="">
+<!-- 🔐 Password Screen -->
+<div id="passwordScreen" class="overlay">
+  <h2>First English word please...(in all small letters)</h2>
   <br>
-  <button onclick="loadRandom()">Pick another</button>
+  <input type="password" id="passwordInput" placeholder="Enter here" />
+  <br><br>
+  <button onclick="checkPassword()">Enter</button>
+  <p id="errorMsg" style="color:red;"></p>
+</div>
+
+<!-- 🎁 Main Content -->
+<div id="mainContent" style="display:none;">
+  <div class="container overlay">
+    <h2>Heyy Sruthiii... em matladukundamm... ❤️</h2>
+    <img id="chitImage" src="">
+    <br>
+    <button onclick="loadRandom()">Pick another</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
